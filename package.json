@@ -1,0 +1,44 @@
+{
+  "name": "efinancial_blog",
+  "version": "1.0.0",
+  "description": "efinancial 'homework'",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server/index.js",
+    "build": "webpack --config webpack.config.js --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KO-11/eFinancial_Blog.git"
+  },
+  "author": "Kevin Olson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KO-11/eFinancial_Blog/issues"
+  },
+  "homepage": "https://github.com/KO-11/eFinancial_Blog#readme",
+  "dependencies": {
+    "@babel/core": "^7.13.10",
+    "@babel/plugin-transform-runtime": "^7.13.10",
+    "@babel/preset-env": "^7.13.10",
+    "@babel/preset-react": "^7.12.13",
+    "@babel/runtime": "^7.13.10",
+    "axios": "^0.21.1",
+    "babel-loader": "^8.2.2",
+    "body-parser": "^1.19.0",
+    "bootstrap": "^4.6.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "firebase": "^8.2.10",
+    "mongoose": "^5.11.19",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.7",
+    "react": "^17.0.1",
+    "react-bootstrap": "^1.5.1",
+    "react-dom": "^17.0.1",
+    "react-router-dom": "^5.2.0",
+    "webpack": "^5.24.4",
+    "webpack-cli": "^4.5.0"
+  }
+}
