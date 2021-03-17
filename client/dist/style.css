@@ -11,16 +11,11 @@ body {
 
 html {
   background: #E5E5E5;
-  color: rgb(97, 97, 97);
 }
 
 a {
   color: rgb(97, 97, 97);
   text-decoration: none;
-}
-
-a:visited {
-  color: rgb(97, 97, 97);
 }
 
 a:hover {
@@ -80,7 +75,7 @@ a:hover {
   font-family: 'Lato';
   font-style: normal;
   font-weight: normal;
-  font-size: 15px;
+  font-size: 20px;
 }
 
 .addPostLink {
@@ -104,9 +99,19 @@ a:hover {
   display: flex;
   flex-direction: row;
   margin-top: 220px;
+  width: 90vw;
+  height: 90vh;
 }
 
-.posts {
+.myPosts {
+  flex: 4;
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+  margin-top: 220px;
+}
+
+.postsList {
   flex: 4;
   display: flex;
   flex-direction: column;
@@ -158,7 +163,7 @@ display: flex;
 }
 
 .userPreview img {
-  max-width: 100px;
+  max-width: 80px;
 }
 
 .postTitle {
@@ -180,7 +185,9 @@ form {
   display: flex;
   flex-direction: column;
   position: center;
-  margin: 250px auto;
+  margin-top: 300px;
+  margin-left: auto;
+  margin-right: auto;
   background-color: #f7f7f9;
   border: 7px solid #f1f1f1;
   width: 50%;
@@ -205,7 +212,9 @@ form.login h1, form.signup h1, form.forgot-password h1 {
 }
 
 form.addpost {
-  height: 700px;
+  height: 600px;
+  width: 80vw;
+  max-width: 600px;
   transform: translate(0px, -60px);
 }
 

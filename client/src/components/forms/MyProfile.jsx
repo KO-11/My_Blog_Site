@@ -16,6 +16,7 @@ const MyProfile = () => {
 
   //set current name and profiel pic
   useEffect(() => {
+
     axios.get(`/api/user/${currentUser.uid}`)
       .then((results) => {
         setPreview(results.data.pic)

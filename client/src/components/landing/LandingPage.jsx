@@ -13,16 +13,11 @@ const Landing = (props) => {
   const { posts, getPosts } = useBlogContext();
   const history = useHistory();
   // const [posts, setPosts] = useState([]);
-
-  //gets all posts in the database everyone has access to see all posts
-  useEffect(() => {
-    getPosts()
-  }, [])
-
+  console.log(posts, 'landing page')
   //map out each post in the postpreview component
   return (
     <div className='feed'>
-      <PostsList posts={posts} />
+      <PostsList />
       <News />
     </div>
   )

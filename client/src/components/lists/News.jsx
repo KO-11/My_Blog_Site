@@ -21,9 +21,9 @@ const News = () => {
 //map the news articles form the external api
   return (
     <div className='news'>
-        {news.map((article) => {
+        {news.map((article, index) => {
           return (
-            <a href={`${article.url}`} target='_blank'>
+            <a key={index} href={`${article.url}`} target='_blank'>
               <div className='newsArticle'>
                 <img src={article.urlToImage}/>
                 <div className='articleInfo'>

@@ -20,14 +20,14 @@ const AppRouter = () => {
     <Router>
           <Navbar />
           <Switch>
-          <Route exact path="/" component={LandingPage} />
+            <Route exact path="/" component={LandingPage} />
             <Route path="/signup" component={Signup} />
             <Route path="/login" component={Login} />
             <Route path="/forgot_password" component={ForgotPassword} />
             <Route path="/my_posts" component={MyPosts} />
-            <Route path='/:id' component={Post} />
+            <Route path='/post/:id' component={Post} />
             <PrivateRoute path='/add_post' component={AddPost} />
-            <PrivateRoute path='/:id' component={UpdatePost} />
+            <PrivateRoute path='/update_post/:id' component={UpdatePost} />
             <PrivateRoute path='/my_profile' component={MyProfile} />
           </Switch>
     </Router>

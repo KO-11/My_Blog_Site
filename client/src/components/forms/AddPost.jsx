@@ -38,8 +38,8 @@ const AddPost = () => {
         </label>
         <label>
           Body:
-          <textarea rows="35" cols="60" ref={bodyRef} type='text' name='body' value={body} onChange={e => setBody(e.target.value)} />
         </label>
+          <textarea rows="30" cols="60" ref={bodyRef} type='text' name='body' value={body} onChange={e => setBody(e.target.value)} />
         <button disabled={title === '' || body === ''} onClick={postSubmit}>Create Post</button>
       </form>
     </div>

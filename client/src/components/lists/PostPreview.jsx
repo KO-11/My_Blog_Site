@@ -9,15 +9,18 @@ import { useBlogContext } from '../../context/BlogContext.js';
 //props received from postslist include the post object itself
 const PostPreview = (props) => {
   const { currentUser } = useAuth();
-  const { posts, setUserId } = useBlogContext();
+  // const { posts, setUserId } = useBlogContext();
 
-
+  console.log(props.post, 'post prop at preview')
   return (
     <div >
       <Link className='previewPostsContainer' to={{
-        pathname: `/${props.post._id}`,
-        postProps: props.post,
-      }}>
+        pathname: `/post/${props.post._id}`,
+        state: {
+          postProps: props.post,
+          userProps: props.post.user
+         }
+        }}>
         <div className='postPreview'>
           <div className='userPreview'>
             <img src={props.post.user.pic} />

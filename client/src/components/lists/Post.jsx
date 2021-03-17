@@ -9,8 +9,8 @@ const Post = (props) => {
   const { currentUser } = useAuth()
   const { posts, getPosts } = useBlogContext()
   const history = useHistory();
-  const [post, setPost] = useState('')
-  const [firebaseId, setFirebaseId] = useState('')
+  // const [post, setPost] = useState('')
+  // const [firebaseId, setFirebaseId] = useState('')
 
   //function to delete post
   const deletePost = (e) => {
@@ -25,27 +25,27 @@ const Post = (props) => {
       })
   }
 
-  useEffect(() => {
-    window.scrollTo(0, 0)
-    setPost(props.location.postProps)
-    setFirebaseId(props.location.postProps.user.firebaseId)
-  }, [])
+  // useEffect(() => {
+  //   window.scrollTo(0, 0)
+  //   setPost(props.location.state.postProps)
+  //   setFirebaseId(props.location.postProps.user.firebaseId)
+  // }, [])
 
   //check to see if the current user that is logged in is the owner of the particular post, if user is the owner of the post then update post and delete post buttons are available
-  if (currentUser && currentUser.uid === firebaseId) {
+  if (currentUser && currentUser.uid === props.location.state.postProps.user.firebaseId) {
     return(
       <div className='singlePostContainer'>
         <div className='user'>
-          <img src={post.user.pic} />
-          <h3>{post.user.name}</h3>
+          <img src={props.location.state.postProps.user.pic} />
+          <h3>{props.location.state.postProps.user.name}</h3>
         </div>
           <div className='postInfo'>
-            <h1>{post.title}</h1>
-            <Moment fromNow>{post.date}</Moment>
-            <p style={{whiteSpace: "pre-wrap"}}>{post.body}</p>
+            <h1>{props.location.state.postProps.title}</h1>
+            <Moment fromNow>{props.location.state.postProps.date}</Moment>
+            <p style={{whiteSpace: "pre-wrap"}}>{props.location.state.postProps.body}</p>
             <Link to={{
-              pathname: `/${post._id}`,
-              propsId: post._id
+              pathname: `/${props.location.state.postProps._id}`,
+              propsId: props.location.state.postProps._id
               }}>
             <button className='updateButton'>Update Post</button>
             </Link>
@@ -58,14 +58,14 @@ const Post = (props) => {
     return (
       <div className='singlePostContainer'>
         <div className='user'>
-          <img src={post.user.pic} />
-          <h3>{post.user.name}</h3>
+          <img src={props.location.state.postProps.user.pic} />
+          <h3>{props.location.state.postProps.user.name}</h3>
         </div>
         <div>
           <div className='postInfo'>
-            <h1>{post.title}</h1>
-            <Moment fromNow>{post.date}</Moment>
-            <p style={{whiteSpace: "pre-wrap"}}>{post.body}</p>
+            <h1>{props.location.state.postProps.title}</h1>
+            <Moment fromNow>{props.location.state.postProps.date}</Moment>
+            <p style={{whiteSpace: "pre-wrap"}}>{props.location.state.postProps.body}</p>
           </div>
         </div>
       </div>

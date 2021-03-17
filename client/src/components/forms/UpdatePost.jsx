@@ -16,6 +16,7 @@ const UpdatePost = (props) => {
 
   //pulls the data of the post to be edited
   useEffect(() => {
+    window.scrollTo(0,0)
     axios.get(`/api/update_post/${props.location.propsId}`)
       .then((results) => {
         setBody(results.data.body)
