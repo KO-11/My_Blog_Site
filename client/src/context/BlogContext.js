@@ -11,24 +11,8 @@ export const useBlogContext = () => {
 
 //create context provider
 export const BlogContextProvider = ({ children }) => {
-  const [user, setUser] = useState()
   const [posts, setPosts] = useState([])
   const [loading, setLoading] = useState(false)
-  // const { currentUser } = useAuth()
-  // const uid = currentUser.uid
-
-  //get the user info of the logged in user
-  const getUserInfo = (uid) => {
-    setLoading(true)
-    axios.get(`/api/user/${uid}`)
-      .then((results) => {
-        setUser(results.data)
-      })
-      .catch((err) => {
-        console.error(err)
-      })
-    setLoading(false);
-  }
 
   // gets all the posts
   const getPosts = () => {
@@ -43,10 +27,8 @@ export const BlogContextProvider = ({ children }) => {
     setLoading(false)
   }
 
-  //values to passed down from context
+  //values to be passed down from context
   const value = {
-    getUserInfo,
-    user,
     getPosts,
     posts,
   }

@@ -1,6 +1,7 @@
-const newsRouter = require('express').Router()
-const NewsAPI = require('newsapi')
+const newsRouter = require('express').Router();
+const NewsAPI = require('newsapi');
 
+//get request to newsAPI api: API key is sotred as an environment variable
 newsRouter.get('/', (req, res) => {
   const newsapi = new NewsAPI(`${process.env.NEWS_API_KEY}`);
 
@@ -13,4 +14,4 @@ newsRouter.get('/', (req, res) => {
   });
 })
 
-module.exports = newsRouter
+module.exports = newsRouter;

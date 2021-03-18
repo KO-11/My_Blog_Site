@@ -1,35 +1,32 @@
-import React, { useRef, useState } from 'react';
-import { Link, Redirect, useHistory } from 'react-router-dom';
-import Signup from './Signup.jsx';
-import { useAuth } from '../../context/AuthContext.js';
-import { useBlogContext } from '../../context/BlogContext.js';
+import React, { useRef, useState } from 'react'
+import { Link, Redirect, useHistory } from 'react-router-dom'
+import Signup from './Signup.jsx'
+import { useAuth } from '../../context/AuthContext.js'
 
 const Login = () => {
 
-  const emailRef = useRef();
-  const passwordRef = useRef();
-  const { currentUser, login } = useAuth();
-  const [error, setError] = useState('');
-  const history = useHistory();
+  const emailRef = useRef()
+  const passwordRef = useRef()
+  const { currentUser, login } = useAuth()
+  const [error, setError] = useState('')
+  const history = useHistory()
 
-  const onClick = async (e) => {
-    e.preventDefault();
+  const handleLogin = async (e) => {
+    e.preventDefault()
 
+    //makes sure both fields have inputs
     if (!emailRef.current.value || !passwordRef.current.value) {
-      return setError('All fields required!');
+      return setError('All fields required!')
     } else {
       try {
-        setError('');
-        await login(emailRef.current.value, passwordRef.current.value);
+        setError('')
+        //attempt to login with user's inputs
+        await login(emailRef.current.value, passwordRef.current.value)
         history.push('/')
       } catch {
-        setError('Failed to sign in!');
+        setError('Failed to sign in!')
       }
     }
-  }
-
-  if (currentUser && currentUser.uid) {
-    return <Redirect to="/posts" />
   }
 
   return (
@@ -45,7 +42,7 @@ const Login = () => {
           Password:
           <input type='password' ref={passwordRef} />
         </label>
-        <button onClick={onClick}>Login</button>
+        <button onClick={handleLogin}>Login</button>
         <div className="link-left" ><Link className='link-no-underline' to='/forgot_password'>Forgot Password?</Link> </div>
         <div className="link-right" >Need an account? <Link className='link-no-underline' to='/signup' >Signup</Link> </div>
       </form>
@@ -54,4 +51,4 @@ const Login = () => {
 
 }
 
-export default Login;
+export default Login

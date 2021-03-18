@@ -1,5 +1,5 @@
 import React, {useState, useRef, useEffect} from 'react';
-import { Link, Redirect, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import { useAuth } from '../../context/AuthContext.js';
 import { storage } from '../../config/firebase.js'
@@ -16,7 +16,6 @@ const MyProfile = () => {
 
   //set current name and profiel pic
   useEffect(() => {
-
     axios.get(`/api/user/${currentUser.uid}`)
       .then((results) => {
         setPreview(results.data.pic)
@@ -27,6 +26,8 @@ const MyProfile = () => {
       })
   }, [])
 
+  //sets the picAsfile state to the selected photo form the user's computer
+  //creates a url and sets the preview state to this url so the user can see the photo they have chosen to upload
   const handlePicAsFile = (e) => {
     const pic = e.target.files[0]
     setPicAsFile(picFile => (pic))
@@ -56,7 +57,7 @@ const MyProfile = () => {
 
   }
 
-  //updateprofile with the firebase url as an argument
+  //updateprofile with the firebase url as an argument this function is called inside the handleFirebaseUpload and so it is triggered once the photo is successfully uploaded to firebase
   const updateProfile = (url) => {
     axios.put(`/api/user/${currentUser.uid}`, {name: name, pic: url})
       .then((results) => {

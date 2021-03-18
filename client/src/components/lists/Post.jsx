@@ -1,21 +1,18 @@
-import React, { useEffect, useState } from 'react';
-import { Link, Redirect, useHistory } from 'react-router-dom';
+import React from 'react'
+import { Link, useHistory } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext.js';
-import { useBlogContext } from '../../context/BlogContext.js';
 import axios from 'axios'
 import Moment from 'react-moment'
 
+//props is passed from PreviewPost
 const Post = (props) => {
   const { currentUser } = useAuth()
-  const { posts, getPosts } = useBlogContext()
-  const history = useHistory();
-  // const [post, setPost] = useState('')
-  // const [firebaseId, setFirebaseId] = useState('')
+  const history = useHistory()
 
   //function to delete post
   const deletePost = (e) => {
     e.preventDefault()
-    axios.delete(`api/delete/${post._id}`)
+    axios.delete(`api/delete/${props.location.state.postState._id}`)
       .then((results) => {
         alert('Post successfully deleted!')
         history.push('/')
@@ -25,27 +22,23 @@ const Post = (props) => {
       })
   }
 
-  // useEffect(() => {
-  //   window.scrollTo(0, 0)
-  //   setPost(props.location.state.postProps)
-  //   setFirebaseId(props.location.postProps.user.firebaseId)
-  // }, [])
-
   //check to see if the current user that is logged in is the owner of the particular post, if user is the owner of the post then update post and delete post buttons are available
-  if (currentUser && currentUser.uid === props.location.state.postProps.user.firebaseId) {
+  //the user is a property on the post that is passed down from the PreviewPost component
+  if (currentUser && currentUser.uid === props.location.state.postState.user.firebaseId) {
     return(
       <div className='singlePostContainer'>
         <div className='user'>
-          <img src={props.location.state.postProps.user.pic} />
-          <h3>{props.location.state.postProps.user.name}</h3>
+          <img src={props.location.state.postState.user.pic} />
+          <h3>{props.location.state.postState.user.name}</h3>
         </div>
           <div className='postInfo'>
-            <h1>{props.location.state.postProps.title}</h1>
-            <Moment fromNow>{props.location.state.postProps.date}</Moment>
-            <p style={{whiteSpace: "pre-wrap"}}>{props.location.state.postProps.body}</p>
+            <h1>{props.location.state.postState.title}</h1>
+            <Moment fromNow>{props.location.state.postState.date}</Moment>
+            <p style={{whiteSpace: "pre-wrap"}}>{props.location.state.postState.body}</p>
             <Link to={{
-              pathname: `/${props.location.state.postProps._id}`,
-              propsId: props.location.state.postProps._id
+              //stateId passed is the posts mongo id
+              pathname: `/update_post/${props.location.state.postState._id}`,
+              stateId: props.location.state.postState._id
               }}>
             <button className='updateButton'>Update Post</button>
             </Link>
@@ -58,14 +51,14 @@ const Post = (props) => {
     return (
       <div className='singlePostContainer'>
         <div className='user'>
-          <img src={props.location.state.postProps.user.pic} />
-          <h3>{props.location.state.postProps.user.name}</h3>
+          <img src={props.location.state.postState.user.pic} />
+          <h3>{props.location.state.postState.user.name}</h3>
         </div>
         <div>
           <div className='postInfo'>
-            <h1>{props.location.state.postProps.title}</h1>
-            <Moment fromNow>{props.location.state.postProps.date}</Moment>
-            <p style={{whiteSpace: "pre-wrap"}}>{props.location.state.postProps.body}</p>
+            <h1>{props.location.state.postState.title}</h1>
+            <Moment fromNow>{props.location.state.postState.date}</Moment>
+            <p style={{whiteSpace: "pre-wrap"}}>{props.location.state.postState.body}</p>
           </div>
         </div>
       </div>

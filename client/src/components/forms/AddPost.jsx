@@ -1,14 +1,13 @@
-import React, {useState, useRef, useEffect} from 'react';
-import { Link, Redirect, useHistory } from 'react-router-dom';
-import axios from 'axios';
-import { useAuth } from '../../context/AuthContext.js';
+import React, {useState, useRef } from 'react'
+import { useHistory } from 'react-router-dom'
+import axios from 'axios'
+import { useAuth } from '../../context/AuthContext.js'
 
 const AddPost = () => {
   const { currentUser } = useAuth();
   const [title, setTitle] = useState('');
   const [body, setBody] = useState('');
   const history = useHistory();
-  console.log(currentUser, 'currentuser')
 
 
   const titleRef = useRef();
@@ -16,9 +15,9 @@ const AddPost = () => {
 
   //adds the post to the database, both title and body are required
   const postSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault()
     if (!title || !body) {
-      alert('All fields required!');
+      alert('All fields required!')
     } else {
       let newPost = {title, body, userId: currentUser.uid}
       axios.post('/api/add_post', newPost)
@@ -31,7 +30,7 @@ const AddPost = () => {
 
   return (
     <div>
-      <form className="addpost">
+      <form className="addPost">
         <label>
           Title:
           <input ref={titleRef} type='text' title='title' value={title} onChange={e => setTitle(e.target.value)} />

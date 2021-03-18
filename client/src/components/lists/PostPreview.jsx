@@ -1,24 +1,21 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 import Moment from 'react-moment'
-import { useAuth } from '../../context/AuthContext.js';
-import { useBlogContext } from '../../context/BlogContext.js';
+import { useAuth } from '../../context/AuthContext.js'
 
 
 //component that displays a preview of the post and offers a link to view a specific post
 //props received from postslist include the post object itself
 const PostPreview = (props) => {
-  const { currentUser } = useAuth();
-  // const { posts, setUserId } = useBlogContext();
+  const { currentUser } = useAuth()
 
-  console.log(props.post, 'post prop at preview')
   return (
     <div >
       <Link className='previewPostsContainer' to={{
         pathname: `/post/${props.post._id}`,
         state: {
-          postProps: props.post,
-          userProps: props.post.user
+          postState: props.post,
+          userState: props.post.user
          }
         }}>
         <div className='postPreview'>
@@ -32,11 +29,11 @@ const PostPreview = (props) => {
           </div>
         </div>
         <div className='contentPreview'>
-          <p style={{whiteSpace: "pre-wrap"}}>{props.post.body}</p>
+          <p style={{whiteSpace: 'pre-wrap', overflowWrap: 'break-word'}}>{props.post.body}</p>
         </div>
       </Link>
     </div>
   )
 }
 
-export default PostPreview;
+export default PostPreview

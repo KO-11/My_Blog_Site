@@ -8,35 +8,37 @@ const UpdatePost = (props) => {
   const [title, setTitle] = useState('');
   const [body, setBody] = useState('');
   const history = useHistory();
-  console.log(props, 'update props')
-
 
   const titleRef = useRef();
   const bodyRef = useRef();
 
-  //pulls the data of the post to be edited
+  //pulls the data of the post to be edited to prefill the inputs with the old submission
   useEffect(() => {
-    window.scrollTo(0,0)
-    axios.get(`/api/update_post/${props.location.propsId}`)
+    axios.get(`/api/update_post/${props.location.stateId}`)
       .then((results) => {
         setBody(results.data.body)
         setTitle(results.data.title)
+      })
+      .catch((err) => {
+        console.error(err)
       })
   }, [])
   //submits the updates to the post in the database
   const postSubmit = (e) => {
     e.preventDefault();
-    let updatePost = {title, body, userId: currentUser.uid}
-    axios.put(`/api/update_post/${props.location.propsId}`, updatePost)
+    let updatePost = {title, body}
+    axios.put(`/api/update_post/${props.location.stateId}`, updatePost)
       .then((results) => {
         history.push('/')
       })
-      .catch((err) => {console.log(err)})
+      .catch((err) => {
+        console.log(err)
+      })
   }
 
   return (
     <div>
-      <form className="newPost">
+      <form className="newPost" onSubmit={postSubmit}>
         <label>
           Title:
           <input ref={titleRef} type='text' title='title' value={title} onChange={e => setTitle(e.target.value)} />
@@ -44,9 +46,8 @@ const UpdatePost = (props) => {
         <label>
           Body:
         </label>
-        <br></br>
-          <textarea rows="5" cols="60" ref={bodyRef} type='text' name='body' value={body} onChange={e => setBody(e.target.value)} />
-        <button onClick={postSubmit}>Update Post</button>
+          <textarea rows="30" cols="60" ref={bodyRef} type='text' name='body' value={body} onChange={e => setBody(e.target.value)} />
+        <button >Update Post</button>
       </form>
     </div>
   )

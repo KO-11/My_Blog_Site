@@ -121,7 +121,7 @@ a:hover {
 
 .news {
   margin-top: 40px;
-  flex: 1;
+  flex: 2;
 }
 
 .news a {
@@ -152,6 +152,7 @@ a:hover {
   display: flex;
   flex-direction: column;
   padding: 50;
+  max-width: 70vw;
 }
 
 .postPreview {
@@ -174,6 +175,7 @@ display: flex;
 
 .contentPreview {
   padding: 5px;
+  max-width: 70vw;
 }
 
 .singlePostContainer {
@@ -211,11 +213,16 @@ form.login h1, form.signup h1, form.forgot-password h1 {
   text-align: center;
 }
 
-form.addpost {
+form.addPost {
   height: 600px;
   width: 80vw;
   max-width: 600px;
-  transform: translate(0px, -60px);
+}
+
+form.newPost {
+  height: 600px;
+  width: 80vw;
+  max-width: 600px;
 }
 
 form button {

@@ -1,5 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import Moment from'react-moment'
 
@@ -7,7 +6,7 @@ import Moment from'react-moment'
 const News = () => {
   const [news, setNews] = useState([])
 
-  //request to get news from hacker news
+  //request to get news from newsapi.org
   useEffect(() => {
     axios.get('/api/news')
       .then((results) => {
@@ -31,7 +30,7 @@ const News = () => {
                   <Moment className='publishedAt' fromNow>{article.publishedAt}</Moment>
                 </div>
                 <div className='articleContent'>
-                  <p style={{whiteSpace: "pre-wrap"}}>{article.content}</p>
+                  <p style={{whiteSpace: 'pre-wrap', overflowWrap: 'break-word'}}>{article.content}</p>
                 </div>
               </div>
             </a>
