@@ -14,12 +14,14 @@ export const BlogContextProvider = ({ children }) => {
   const [posts, setPosts] = useState([])
   const [loading, setLoading] = useState(false)
 
-  // gets all the posts
+  // gets all the posts and sort by newest
   const getPosts = () => {
     setLoading(true)
     axios.get(`/api/all_posts`)
       .then((results) => {
-        setPosts(results.data)
+        setPosts(results.data.sort((a, b) => {
+          return new Date(b.date) - new Date(a.date)
+        }))
       })
       .catch((err) => {
         console.error(err)

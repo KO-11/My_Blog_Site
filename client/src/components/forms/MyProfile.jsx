@@ -6,6 +6,7 @@ import { storage } from '../../config/firebase.js'
 
 const MyProfile = () => {
   const { currentUser } = useAuth()
+  const [error, setError] = useState('')
   const [name, setName] = useState('')
   const [picAsFile, setPicAsFile] = useState('')
   const [preview, setPreview] = useState('')
@@ -68,6 +69,10 @@ const MyProfile = () => {
       })
   }
 
+  const handleUploadButton = (e) => {
+    picRef.current.click();
+  }
+
   return (
     <div>
       <form className="newPost" onSubmit={handleFireBaseUpload}>
@@ -79,11 +84,16 @@ const MyProfile = () => {
           Profile Pic:
         </label>
         <br></br>
-        <span>
+        <span className='picPreview'>
           <img src={preview} alt="dummy" width="300" height="300" />
         </span>
-          <input ref={picRef} type='file' name='profile' onChange={handlePicAsFile} />
-        <button>Update Profile</button>
+        <span className='picInput'>
+          <button className='photoButton' onClick={handleUploadButton} >
+            Choose photo
+          </button>
+          <input ref={picRef} type='file' name='profile' style={{display: 'none'}} onChange={handlePicAsFile} />
+        </span>
+        <button>Update</button>
       </form>
     </div>
   )

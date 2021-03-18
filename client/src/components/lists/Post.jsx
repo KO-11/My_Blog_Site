@@ -27,22 +27,28 @@ const Post = (props) => {
   if (currentUser && currentUser.uid === props.location.state.postState.user.firebaseId) {
     return(
       <div className='singlePostContainer'>
+        <div className='singleHeader'>
         <div className='user'>
           <img src={props.location.state.postState.user.pic} />
-          <h3>{props.location.state.postState.user.name}</h3>
+          <h3 className='singleAuthor'>{props.location.state.postState.user.name}</h3>
+        </div>
+            <h1 className='singleTitle'>{props.location.state.postState.title}</h1>
         </div>
           <div className='postInfo'>
-            <h1>{props.location.state.postState.title}</h1>
-            <Moment fromNow>{props.location.state.postState.date}</Moment>
-            <p style={{whiteSpace: "pre-wrap"}}>{props.location.state.postState.body}</p>
-            <Link to={{
-              //stateId passed is the posts mongo id
-              pathname: `/update_post/${props.location.state.postState._id}`,
-              stateId: props.location.state.postState._id
-              }}>
-            <button className='updateButton'>Update Post</button>
-            </Link>
-            <button className='updateButton' onClick={deletePost}>Delete Post</button>
+            <h4>
+              <Moment fromNow>{props.location.state.postState.date}</Moment>
+            </h4>
+            <p>{props.location.state.postState.body}</p>
+            <div className='editPostButtons'>
+              <Link className='updateButtonLink' to={{
+                //stateId passed is the posts mongo id
+                pathname: `/update_post/${props.location.state.postState._id}`,
+                stateId: props.location.state.postState._id
+                }}>
+              <button className='updateButton'>Update Post</button>
+              </Link>
+              <button className='deleteButton' onClick={deletePost}>Delete Post</button>
+            </div>
           </div>
       </div>
     )
@@ -50,17 +56,21 @@ const Post = (props) => {
     //else if user doesn't own the post, the regular view of the single post is rendered
     return (
       <div className='singlePostContainer'>
+      <div className='singleHeader'>
         <div className='user'>
           <img src={props.location.state.postState.user.pic} />
-          <h3>{props.location.state.postState.user.name}</h3>
+          <h1 className='singleAuthor'>{props.location.state.postState.user.name}</h1>
         </div>
-        <div>
-          <div className='postInfo'>
-            <h1>{props.location.state.postState.title}</h1>
-            <Moment fromNow>{props.location.state.postState.date}</Moment>
-            <p style={{whiteSpace: "pre-wrap"}}>{props.location.state.postState.body}</p>
-          </div>
+          <h1 className='singleTitle'>{props.location.state.postState.title}</h1>
+      </div>
+      <div>
+        <div className='postInfo'>
+          <h4>
+          <Moment format="ddd MMM D, YYYY">{props.location.state.postState.date}</Moment>
+          </h4>
+          <p >{props.location.state.postState.body}</p>
         </div>
+      </div>
       </div>
     )
   }

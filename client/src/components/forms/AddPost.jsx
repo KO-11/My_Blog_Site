@@ -31,15 +31,17 @@ const AddPost = () => {
   return (
     <div>
       <form className="addPost">
-        <label>
+        <label >
           Title:
-          <input ref={titleRef} type='text' title='title' value={title} onChange={e => setTitle(e.target.value)} />
         </label>
+        <div className="addHeader">
+          <input className='addTitle' ref={titleRef} type='text' title='title' value={title} onChange={e => setTitle(e.target.value)} />
+        <button disabled={title === '' || body === ''} onClick={postSubmit}>Create Post</button>
+        </div>
         <label>
           Body:
         </label>
-          <textarea rows="30" cols="60" ref={bodyRef} type='text' name='body' value={body} onChange={e => setBody(e.target.value)} />
-        <button disabled={title === '' || body === ''} onClick={postSubmit}>Create Post</button>
+          <textarea className='addBody' rows="30" cols="60" ref={bodyRef} type='text' name='body' value={body} onChange={e => setBody(e.target.value)} />
       </form>
     </div>
   )

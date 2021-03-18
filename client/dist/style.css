@@ -120,8 +120,7 @@ a:hover {
   display: flex;
   flex-direction: column;
   padding: 5px;
-  margin-top: 220px;
-  max-width: 70vw;
+  margin: 220 100 0 100;
 }
 
 .postsList {
@@ -180,18 +179,23 @@ a:hover {
   max-width: 70vw;
 }
 
+
 .postPreview {
-display: flex;
-padding: 20 70 0 100;
+  display: flex;
+  padding: 20 70 0 100;
 }
 
 .userPreview {
- margin: auto;
+  margin: auto;
 }
 
 .userPreview img {
-  max-width: 80px;
+  width: 100px;
   border-radius: 50%;
+}
+
+.authorPreview {
+  text-align: center;
 }
 
 .postTitle {
@@ -207,20 +211,49 @@ padding: 20 70 0 100;
 }
 
 .singlePostContainer {
-  margin-top: 250px;
+  margin: 250 100 0 100;;
+}
+
+.singleHeader {
+  display: flex;
+}
+
+.singleAuthor {
+  text-align: center;
+}
+
+.user {
+  padding: 5px;
+  flex: 1;
+}
+
+.user img {
+  width: 200px;
+  border-radius: 50%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.singleTitle {
+  flex: 4;
+  font-size: 50px;
+  text-align: center;
+  padding: 50 200 0 0;
+}
+
+.postInfo {
+  max-width: 80vw;
 }
 
 form {
-  border-radius: 2%;
   display: flex;
   flex-direction: column;
   position: center;
   margin-top: 300px;
   margin-left: auto;
   margin-right: auto;
-  background-color: #f7f7f9;
-  border: 7px solid #f1f1f1;
-  width: 50%;
+  width: 25%;
   font-family: 'Teko', sans-serif;
   font-size: 24;
   z-index: 1000;
@@ -236,7 +269,12 @@ form.login {
   transform: translate(0px, -60px);
 }
 
-form.login h1, form.signup h1, form.forgot-password h1 {
+form.forgot-password h1  {
+  white-space: nowrap;
+  margin-bottom: 10px;
+}
+
+form.login h1, form.signup h1 {
   margin: 0;
   text-align: center;
 }
@@ -244,7 +282,25 @@ form.login h1, form.signup h1, form.forgot-password h1 {
 form.addPost {
   height: 600px;
   width: 80vw;
-  max-width: 600px;
+  max-width: 800px;
+}
+
+.addHeader {
+  display: flex;
+}
+
+.addTitle {
+  width: 50%;
+  flex: 1 1 auto;
+}
+
+.addBody {
+  width: 100%;
+}
+
+.editPostButtons {
+  display: flex;
+  float: left;
 }
 
 form.newPost {
@@ -254,29 +310,92 @@ form.newPost {
 }
 
 form button {
-  border-radius: 2%;
-  background-color: #292929;
-  color: white;
-  padding: 10px 20px;
-  margin: 8px 0;
-  border: none;
+  background: #292929;
+  border: 1px solid #292929;
+  box-sizing: border-box;
+  border-radius: 122px;
   cursor: pointer;
-  width: 100%;
-  font-family: 'Teko', sans-serif;
-  font-size: 24;
+  float: right;
+  font-family: 'Matter';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: 0.4em;
+  margin: 5px;
+  padding: 10px;
+  color: #FFFFFF;
+  width: 250;
+  height: 50;
+}
+
+form button:hover {
+  color: rgb(150, 150, 150);
 }
 
 .updateButton {
-  border-radius: 2%;
-  background-color: #292929;
-  color: white;
-  padding: 10px 20px;
-  margin: 8px 0;
-  border: none;
+  background: #292929;
+  border: 1px solid #292929;
+  box-sizing: border-box;
+  border-radius: 122px;
+  float: right;
+  font-family: 'Matter';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: 0.4em;
+  padding: 10px;
+  color: #FFFFFF;
+  width: 250;
+  height: 50;
+  margin: 20px;
   cursor: pointer;
-  width: 100%;
-  font-family: 'Teko', sans-serif;
-  font-size: 24;
+}
+
+.deleteButton {
+  background: #292929;
+  border: 1px solid #292929;
+  box-sizing: border-box;
+  border-radius: 122px;
+  float: right;
+  font-family: 'Matter';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: 0.4em;
+  padding: 10px;
+  color: #FFFFFF;
+  width: 250;
+  height: 50;
+  margin: 20px;
+  cursor: pointer;
+}
+.updateButton:hover {
+  color: rgb(150, 150, 150);
+}
+
+.photoButton {
+  cursor: pointer;
+  float: left;
+}
+
+.photoButton:hover {
+  color: rgb(150, 150, 150);
+}
+
+.picPreview img {
+  border-radius: 50%;
+  max-width: 300px;
+}
+
+.link-left {
+  margin: 5px;
+}
+
+.link-right {
+  margin: 5px;
 }
 
 input {

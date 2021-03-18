@@ -42,7 +42,7 @@ const ForgotPassword = () => {
           Email:
           <input type='email' ref={emailRef} />
         </label>
-        <button onClick={handleReset}>Reset Password</button>
+        <button onClick={handleReset}>Reset</button>
         <div className="link-left" >Remember Password? <Link className='link-no-underline' to='/login'>Login</Link> </div>
         <div className="link-right" >Need an account? <Link className='link-no-underline' to='/signup' >Signup</Link> </div>
       </form>
