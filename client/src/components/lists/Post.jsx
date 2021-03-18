@@ -12,7 +12,7 @@ const Post = (props) => {
   //function to delete post
   const deletePost = (e) => {
     e.preventDefault()
-    axios.delete(`api/delete/${props.location.state.postState._id}`)
+    axios.delete(`/api/delete/${props.location.state.postState._id}`)
       .then((results) => {
         alert('Post successfully deleted!')
         history.push('/')

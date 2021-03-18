@@ -38,6 +38,10 @@ const Signup = () => {
 
   }
 
+  if (currentUser && currentUser.uid) {
+    return <Redirect to="/" />
+  }
+
   return (
     <div>
       {error && alert(error)}

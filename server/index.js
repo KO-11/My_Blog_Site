@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const newsRouter = require('./newsRouter.js');
 const apiRouter = require('./apiRouter.js');
+const db = require('../db')
 
 //retrun the index.html for all static requests
 app.use(express.static(path.join(__dirname, '../client/dist')));

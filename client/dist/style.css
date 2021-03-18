@@ -1,8 +1,3 @@
-@font-face {
-  font-family: 'Matter';
-  src: url('./fonts/Matter-Bold.otf')
-}
-
 body {
   margin-top: 100px;
   margin-bottom: 100px;
@@ -41,24 +36,35 @@ a:hover {
 }
 
 .title{
+  display: flex;
   flex-basis: 125px;
-  justify-content: flex-start;
-  font-family: 'Matter';
   font-style: normal;
-  font-weight: normal;
-  font-size: 60px;
-  letter-spacing: 0.265em;
+  font-size: 40px;
   background: #292929;
   color: #FFFFFF;
   line-height: 2;
-  padding: 15
+  padding: 15 15 15 80;
+}
+
+.titleLight{
+  font-family: 'Inter', sans-serif;
+  font-weight: 100;
+  padding-left: 30px;
+  letter-spacing: .4rem;
+}
+
+.titleBold{
+  font-family: 'Arial';
+  font-weight: 'bold';
+  padding-left: 15px;
 }
 
 .navbar {
   display: flex;
   flex-direction: row;
   background: #E5E5E5;
-  padding: 10px;
+  padding: 10 80 10 80;
+  border-bottom: 2px solid rgb(97, 97, 97);
 }
 
 .nav-left {
@@ -68,7 +74,6 @@ a:hover {
 }
 
 .nav-right {
-  display: flex;
   flex: 1;
   justify-content: flex-end;
   padding: 6px;
@@ -77,7 +82,7 @@ a:hover {
 
 .navLink {
   margin: 8px;
-  font-family: 'Lato';
+  font-family: 'Arial';
   font-style: normal;
   font-weight: normal;
   font-size: 20px;
@@ -87,9 +92,9 @@ a:hover {
   background: #292929;
   border: 1px solid #292929;
   box-sizing: border-box;
-  align-content: center;
   border-radius: 122px;
-  font-family: 'Lato';
+  float: right;
+  font-family: 'Matter';
   font-style: normal;
   font-weight: normal;
   font-size: 20px;
@@ -97,36 +102,50 @@ a:hover {
   letter-spacing: 0.4em;
   padding: 10px;
   color: #FFFFFF;
+  width: 250;
+  height: 50;
+}
+
+.addPostText {
+  margin-left: 22px;
 }
 
 
 .feed {
   display: flex;
-  flex-direction: row;
   margin-top: 220px;
-  width: 90vw;
-  height: 90vh;
 }
 
 .myPosts {
-  flex: 4;
   display: flex;
   flex-direction: column;
   padding: 5px;
   margin-top: 220px;
+  max-width: 70vw;
 }
 
 .postsList {
-  flex: 4;
   display: flex;
   flex-direction: column;
   padding: 5px;
   margin-top: 40px;
+  max-width: 60vw;
 }
 
 .news {
   margin-top: 40px;
-  flex: 2;
+  max-width: 30vw;
+}
+
+.newsTitle {
+  margin: 8px;
+  font-family: 'Arial';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  color: rgb(97, 97, 97);
+  padding-left: 30px;
+
 }
 
 .news a {
@@ -134,6 +153,7 @@ a:hover {
 }
 
 .newsArticle {
+  padding: 20px;
   margin: auto;
 }
 
@@ -142,7 +162,7 @@ a:hover {
 }
 
 .articleInfo {
-  display: flex;
+  margin: auto;
 }
 
 .articleContent {
@@ -156,12 +176,13 @@ a:hover {
 .previewPostsContainer {
   display: flex;
   flex-direction: column;
-  padding: 50;
+  padding: 20 50 50 50;
   max-width: 70vw;
 }
 
 .postPreview {
 display: flex;
+padding: 20 70 0 100;
 }
 
 .userPreview {
@@ -170,17 +191,19 @@ display: flex;
 
 .userPreview img {
   max-width: 80px;
+  border-radius: 50%;
 }
 
 .postTitle {
   flex: 4;
   text-align: left;
-  padding: 15px;
+  padding-left: 40px;
 }
 
 .contentPreview {
-  padding: 5px;
+  padding: 0 70 70 70px;
   max-width: 70vw;
+  border-bottom: 2px solid rgb(150, 150, 150);
 }
 
 .singlePostContainer {

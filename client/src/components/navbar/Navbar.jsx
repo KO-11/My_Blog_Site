@@ -25,7 +25,8 @@ const Navbar = () => {
     return (
       <div className='header'>
         <div className='title'>
-          <div >Justablog Blog</div>
+          <div className='titleLight'>justablog</div>
+          <div className='titleBold'>blog</div>
         </div>
         <div className='navbar'>
           <div className='nav-left'>
@@ -35,7 +36,7 @@ const Navbar = () => {
             <Link to='/login' className='navLink'> Login </Link>
           </div>
           <div className='nav-right'>
-            <Link to='/login' className='addPostLink'>Add Post</Link>
+            <Link to='/login' className='addPostLink'>Add a post</Link>
           </div>
         </div>
       </div>
@@ -46,7 +47,8 @@ const Navbar = () => {
   return (
     <div className='header'>
     <div className='title'>
-      <div >Justablog Blog</div>
+      <div className='titleLight'>justablog</div>
+      <div className='titleBold'>blog</div>
     </div>
     <div className='navbar'>
       <div className='nav-left'>
@@ -56,7 +58,9 @@ const Navbar = () => {
         <Link to='/' className='navLink' onClick={handleLogout}> Logout </Link>
       </div>
       <div className='nav-right'>
-        <Link to='/add_post' className='addPostLink'>Add Post</Link>
+        <Link to='/add_post' className='addPostLink'>
+          <div className='addPostText'>Add a post</div>
+        </Link>
       </div>
     </div>
   </div>

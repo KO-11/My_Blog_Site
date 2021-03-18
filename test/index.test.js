@@ -2,7 +2,6 @@ const chai = require('chai');
 const chaiHttp = require('chai-http');
 const should = chai.should();
 const server = require('../server');
-const db = require('../db')
 const BlueBird = require('bluebird');
 const User = require('../db/user.js');
 const Post = require('../db/post.js');
@@ -12,7 +11,7 @@ chai.use(chaiHttp);
 
 const setupUsers = (...userObjects) => {
   return BlueBird.mapSeries(userObjects, user => {
-      return chai.request('http://localhost:3000')
+      return chai.request(server)
           .post('/api/add_user')
           .send(user)
           .then(response => {
@@ -23,7 +22,7 @@ const setupUsers = (...userObjects) => {
 
 const setupPosts = (...postObjects) => {
   return BlueBird.mapSeries(postObjects, post => {
-    return chai.request('http://localhost:3000')
+    return chai.request(server)
       .post(`/api/add_post`)
       .send(post)
       .then(response => {

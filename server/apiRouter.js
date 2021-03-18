@@ -11,6 +11,7 @@ apiRouter.get('/all_posts', (req, res) => {
       res.status(200).send(results)
     })
     .catch((err) => {
+      console.error(err, 'error from mongo')
       res.status(404).send(err)
     })
   })

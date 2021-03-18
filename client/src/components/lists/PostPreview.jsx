@@ -8,6 +8,7 @@ import { useAuth } from '../../context/AuthContext.js'
 //props received from postslist include the post object itself
 const PostPreview = (props) => {
   const { currentUser } = useAuth()
+  console.log(props.post, 'frompreview')
 
   return (
     <div >

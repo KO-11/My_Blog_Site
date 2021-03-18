@@ -20,6 +20,7 @@ const News = () => {
 //map the news articles form the external api
   return (
     <div className='news'>
+      <div className='newsTitle'>Latest News</div>
         {news.map((article, index) => {
           return (
             <a key={index} href={`${article.url}`} target='_blank'>

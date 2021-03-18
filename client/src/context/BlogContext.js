@@ -19,7 +19,7 @@ export const BlogContextProvider = ({ children }) => {
     setLoading(true)
     axios.get(`/api/all_posts`)
       .then((results) => {
-        setPosts(results.data.sort((a, b) => new Date(b.date) - new Date(a.date)))
+        setPosts(results.data)
       })
       .catch((err) => {
         console.error(err)
