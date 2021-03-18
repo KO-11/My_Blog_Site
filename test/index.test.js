@@ -80,7 +80,7 @@ describe('blog server apis', () => {
 
   afterEach(async () => {
       await User.deleteMany({ name: 'test' });
-      await Post.deleteMany();
+      await Post.deleteMany({title: 'test'});
   });
 
   it('should create a user', async() => {
