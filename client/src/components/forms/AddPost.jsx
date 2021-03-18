@@ -35,7 +35,7 @@ const AddPost = () => {
           Title:
         </label>
           <div className='addHeader'>
-          <input className='addTitle' ref={titleRef} type='text' title='title' value={title} onChange={e => setTitle(e.target.value)} />
+          <input className='addTitle' ref={titleRef} placeholder='your title' type='text' title='title' value={title} onChange={e => setTitle(e.target.value)} />
           <button >Create Post</button>
         </div>
         <label>
