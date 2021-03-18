@@ -27,16 +27,16 @@ const AddPost = () => {
         .catch((err) => {console.log(err)})
     }
   }
-  console.log(title, 'title')
+
   return (
     <div>
       <form className="addPost" onSubmit={postSubmit}>
+        <button >Create Post</button>
         <label >
           Title:
         </label>
           <div className='addHeader'>
           <textarea rows="1" cols="40" className='addTitle' ref={titleRef} placeholder='Your Creative Title' type='text' name='title' value={title} onChange={e => setTitle(e.target.value)} />
-          <button >Create Post</button>
         </div>
         <label>
           Body:

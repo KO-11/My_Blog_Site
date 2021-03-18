@@ -292,6 +292,7 @@ form.addPost {
 .addTitle {
   width: 50%;
   flex: 1 1 auto;
+  line-height: 40px;
 }
 
 .addBody {
@@ -305,6 +306,7 @@ form.addPost {
 .updateTitle {
   width: 50%;
   flex: 1 1 auto;
+  line-height: 40px;
 }
 
 .updateBody {

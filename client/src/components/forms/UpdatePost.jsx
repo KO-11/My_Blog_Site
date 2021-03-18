@@ -39,12 +39,12 @@ const UpdatePost = (props) => {
   return (
     <div>
       <form className="updatePost" onSubmit={postSubmit}>
+        <button >Update Post</button>
         <label>
           Title:
         </label>
         <div className='updateHeader'>
           <textarea rows="1" cols="40" className='updateTitle' ref={titleRef} type='text' name='title' value={title} onChange={e => setTitle(e.target.value)} />
-        <button >Update Post</button>
         </div>
         <label>
           Body:
