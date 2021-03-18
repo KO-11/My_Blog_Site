@@ -298,15 +298,29 @@ form.addPost {
   width: 100%;
 }
 
+.updateHeader {
+  display: flex;
+}
+
+.updateTitle {
+  width: 50%;
+  flex: 1 1 auto;
+}
+
+.updateBody {
+  width: 100%;
+}
+
+
+form.updatePost {
+  height: 600px;
+  width: 80vw;
+  max-width: 800px;
+}
+
 .editPostButtons {
   display: flex;
   float: left;
-}
-
-form.newPost {
-  height: 600px;
-  width: 80vw;
-  max-width: 600px;
 }
 
 form button {
