@@ -41,7 +41,7 @@ const AddPost = () => {
         <label>
           Body:
         </label>
-          <textarea className='addBody' rows="30" cols="60" ref={bodyRef} type='text' name='body' value={body} onChange={e => setBody(e.target.value)} />
+          <textarea className='addBody' rows="30" cols="60" ref={bodyRef} placeholder='Your creative blog.'type='text' name='body' value={body} onChange={e => setBody(e.target.value)} />
       </form>
     </div>
   )
