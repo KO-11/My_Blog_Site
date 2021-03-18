@@ -30,12 +30,14 @@ const AddPost = () => {
 
   return (
     <div>
-      <form className="addPost">
-        <button disabled={title === '' || body === ''} onClick={postSubmit}>Create Post</button>
+      <form className="addPost" onSubmit={postSubmit}>
         <label >
           Title:
         </label>
-        <input className='addTitle' ref={titleRef} type='text' title='title' value={title} onChange={e => setTitle(e.target.value)} />
+          <div className='addHeader'>
+          <input className='addTitle' ref={titleRef} type='text' title='title' value={title} onChange={e => setTitle(e.target.value)} />
+          <button >Create Post</button>
+        </div>
         <label>
           Body:
         </label>
