@@ -29,7 +29,7 @@ const Signup = () => {
         setError('')
         //await response from firebase and then create the user with the firebaseId into the mongo database setting the initial name and photo to anonymous
         const response = await signup(emailRef.current.value, passwordRef.current.value)
-        await axios.post('/api/add_user', {firebaseId: response.user.uid, email: response.user.email, name: 'anonymous', pic: 'https://firebasestorage.googleapis.com/v0/b/auth-development-35735.appspot.com/o/images%2Fanonymous.png?alt=media&token=2dfab25e-3a7e-42c2-90c1-7daed66ad457', posts: []})
+        await axios.post(`/api/add_user`, {firebaseId: response.user.uid, email: response.user.email, name: 'anonymous', pic: 'https://firebasestorage.googleapis.com/v0/b/auth-development-35735.appspot.com/o/images%2Fanonymous.png?alt=media&token=2dfab25e-3a7e-42c2-90c1-7daed66ad457', posts: []})
       } catch (err) {
         console.error(err)
         setError(err)

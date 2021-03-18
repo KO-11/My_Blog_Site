@@ -31,13 +31,11 @@ const AddPost = () => {
   return (
     <div>
       <form className="addPost">
+        <button disabled={title === '' || body === ''} onClick={postSubmit}>Create Post</button>
         <label >
           Title:
         </label>
-        <div className="addHeader">
-          <input className='addTitle' ref={titleRef} type='text' title='title' value={title} onChange={e => setTitle(e.target.value)} />
-        <button disabled={title === '' || body === ''} onClick={postSubmit}>Create Post</button>
-        </div>
+        <input className='addTitle' ref={titleRef} type='text' title='title' value={title} onChange={e => setTitle(e.target.value)} />
         <label>
           Body:
         </label>
