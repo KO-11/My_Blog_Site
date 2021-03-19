@@ -10,6 +10,7 @@ const MyProfile = () => {
   const [name, setName] = useState('')
   const [picAsFile, setPicAsFile] = useState('')
   const [preview, setPreview] = useState('')
+  const [updatePic, setUpdatePic] = useState(false)
   const history = useHistory();
 
   const nameRef = useRef();
@@ -33,6 +34,7 @@ const MyProfile = () => {
     const pic = e.target.files[0]
     setPicAsFile(picFile => (pic))
     setPreview(URL.createObjectURL(pic))
+    setUpdatePic(true)
     return pic
   }
 
@@ -40,21 +42,25 @@ const MyProfile = () => {
   const handleFireBaseUpload = (e) => {
     e.preventDefault()
 
-    if(picAsFile === '') {
-      setError(`not an image, the image file is a ${typeof(picAsFile)}`)
-    }
-    const uploadTask = storage.ref(`/images/${picAsFile.name}`).put(picAsFile)
+    if(updatePic) {
+      if(picAsFile === '') {
+        setError(`not an image, the image file is a ${typeof(picAsFile)}`)
+      }
+      const uploadTask = storage.ref(`/images/${picAsFile.name}`).put(picAsFile)
 
-    uploadTask.on('state_changed',
-    (snapShot) => {
-    }, (err) => {
-      console.log(err)
-    }, () => {
-      storage.ref('images').child(picAsFile.name).getDownloadURL()
-        .then( (fireBaseUrl) => {
-          updateProfile(fireBaseUrl)
-        })
-    })
+      uploadTask.on('state_changed',
+      (snapShot) => {
+      }, (err) => {
+        console.log(err)
+      }, () => {
+        storage.ref('images').child(picAsFile.name).getDownloadURL()
+          .then( (fireBaseUrl) => {
+            updateProfile(fireBaseUrl)
+          })
+      })
+    } else {
+      updateProfile(preview)
+    }
 
   }
 
