@@ -43,9 +43,7 @@ const UpdatePost = (props) => {
         <label>
           Title:
         </label>
-        <div className='updateHeader'>
-          <textarea rows="1" cols="40" className='updateTitle' ref={titleRef} type='text' name='title' value={title} onChange={e => setTitle(e.target.value)} />
-        </div>
+          <textarea rows="1" cols="40" className='blogTitle' ref={titleRef} type='text' name='title' value={title} onChange={e => setTitle(e.target.value)} />
         <label>
           Body:
         </label>

@@ -289,7 +289,7 @@ form.addPost {
   display: flex;
 }
 
-.addTitle {
+.blogTitle {
   width: 50%;
   flex: 1 1 auto;
   line-height: 40px;
