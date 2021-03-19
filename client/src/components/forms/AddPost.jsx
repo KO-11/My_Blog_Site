@@ -31,11 +31,13 @@ const AddPost = () => {
   return (
     <div>
       <form className="addPost" onSubmit={postSubmit}>
-        <button >Create Post</button>
         <label >
           Title:
         </label>
+        <div className='blogHeader'>
         <textarea rows="1" cols="40" className='blogTitle' ref={titleRef} placeholder='Your Creative Title' type='text' name='title' value={title} onChange={e => setTitle(e.target.value)} />
+        <button >Create Post</button>
+        </div>
         <label>
           Body:
         </label>

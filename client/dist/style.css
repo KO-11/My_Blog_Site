@@ -285,7 +285,7 @@ form.addPost {
   max-width: 800px;
 }
 
-.addHeader {
+.blogHeader {
   display: flex;
 }
 
@@ -299,7 +299,7 @@ form.addPost {
   width: 100%;
 }
 
-.updateHeader {
+.blogHeader {
   display: flex;
 }
 
