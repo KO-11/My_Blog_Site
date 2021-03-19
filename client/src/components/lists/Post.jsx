@@ -38,7 +38,7 @@ const Post = (props) => {
             <h4>
               <Moment fromNow>{props.location.state.postState.date}</Moment>
             </h4>
-            <p>{props.location.state.postState.body}</p>
+            <p className='singleContent'>{props.location.state.postState.body}</p>
             <div className='editPostButtons'>
               <Link className='updateButtonLink' to={{
                 //stateId passed is the posts mongo id
@@ -68,7 +68,7 @@ const Post = (props) => {
           <h4>
           <Moment format="ddd MMM D, YYYY">{props.location.state.postState.date}</Moment>
           </h4>
-          <p >{props.location.state.postState.body}</p>
+          <p className='singleContent'>{props.location.state.postState.body}</p>
         </div>
       </div>
       </div>

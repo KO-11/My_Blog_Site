@@ -179,6 +179,9 @@ a:hover {
   max-width: 70vw;
 }
 
+.previewPostsContainer:hover {
+  color: rgb(97, 97, 97);
+}
 
 .postPreview {
   display: flex;
@@ -189,9 +192,15 @@ a:hover {
   margin: auto;
 }
 
-.userPreview img {
+.userPreviewPic {
   width: 100px;
-  border-radius: 50%;
+  height: 100px;
+}
+
+.userPreview img {
+  border-radius: 10%;
+  max-width: 100%;
+  max-height: 100%;
 }
 
 .authorPreview {
@@ -240,6 +249,10 @@ a:hover {
   font-size: 50px;
   text-align: center;
   padding: 50 200 0 0;
+}
+
+.singleContent {
+  white-space: pre-wrap;
 }
 
 .postInfo {

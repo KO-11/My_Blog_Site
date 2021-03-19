@@ -20,7 +20,9 @@ const PostPreview = (props) => {
         }}>
         <div className='postPreview'>
           <div className='userPreview'>
+            <div className='userPreviewPic'>
             <img src={props.post.user.pic} />
+            </div>
             <h3 className='authorPreview'>{props.post.user.name}</h3>
           </div>
           <div className='postTitle'>
