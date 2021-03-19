@@ -1,4 +1,3 @@
-
 import React, {useState, useRef, useEffect} from 'react';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
@@ -11,16 +10,18 @@ const MyProfile = () => {
   const [name, setName] = useState('')
   const [picAsFile, setPicAsFile] = useState('')
   const [preview, setPreview] = useState('')
-  const history = useHistory();
+  const [oldUrl, setOldUrl] = useState('')
+  const history = useHistory()
 
-  const nameRef = useRef();
-  const picRef = useRef();
+  const nameRef = useRef()
+  const picRef = useRef()
 
   //set current name and profiel pic
   useEffect(() => {
     axios.get(`/api/user/${currentUser.uid}`)
       .then((results) => {
         setPreview(results.data.pic)
+        setOldUrl(results.data.pic)
         setName(results.data.name)
       })
       .catch((err) => {
@@ -40,22 +41,25 @@ const MyProfile = () => {
   //upload photo to firebase storage and send the resulting url to update profile
   const handleFireBaseUpload = (e) => {
     e.preventDefault()
+    if(preview !== oldUrl) {
+      if(picAsFile === '') {
+        setError(`not an image, the image file is a ${typeof(picAsFile)}`)
+      }
+      const uploadTask = storage.ref(`/images/${picAsFile.name}`).put(picAsFile)
 
-    if(picAsFile === '') {
-      setError(`not an image, the image file is a ${typeof(picAsFile)}`)
+      uploadTask.on('state_changed',
+      (snapShot) => {
+      }, (err) => {
+        console.log(err)
+      }, () => {
+        storage.ref('images').child(picAsFile.name).getDownloadURL()
+          .then( (fireBaseUrl) => {
+            updateProfile(fireBaseUrl)
+          })
+      })
+    } else {
+      updateProfile(preview)
     }
-    const uploadTask = storage.ref(`/images/${picAsFile.name}`).put(picAsFile)
-
-    uploadTask.on('state_changed',
-    (snapShot) => {
-    }, (err) => {
-      console.log(err)
-    }, () => {
-      storage.ref('images').child(picAsFile.name).getDownloadURL()
-        .then( (fireBaseUrl) => {
-          updateProfile(fireBaseUrl)
-        })
-    })
 
   }
 
@@ -71,7 +75,8 @@ const MyProfile = () => {
   }
 
   const handleUploadButton = (e) => {
-    picRef.current.click();
+    e.preventDefault()
+    picRef.current.click()
   }
 
   return (
